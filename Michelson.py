@@ -61,6 +61,18 @@ class Michelson:
         plt.title('intensity pattern')
         return plt
 
+    def subplot_x(self, grid_width, grid_height, tx, args):
+        plt.subplot(grid_height, grid_width, args).imshow(self.I, cmap='gray')
+        plt.axis("off")
+        plt.title("Tilt: %.1E" % tx)
+        return plt
+
+    def subplot_y(self, grid_widht, grid_height, ty, args):
+        plt.subplot(grid_height, grid_widht, args).imshow(self.I, cmap='gray')
+        plt.axis("off")
+        plt.title("Tilt: %.1E" % ty)
+
+
     def get_intensity(self):
         return self.I
 
