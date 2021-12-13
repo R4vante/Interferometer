@@ -33,11 +33,10 @@ def main():
     def my_subplot(my_grid_width, my_grid_height, my_tx_list, my_ty_list):
         light_beam = Michelson(wavelength, size, N, R, z1, z2, z3, z4, Rbs, f)
         i = 0
-        j = 5
 
         # first figure
         fig1 = plt.figure()
-        
+
         # subplots in x direction
         for my_tx in my_tx_list:
             i += 1
