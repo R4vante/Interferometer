@@ -3,7 +3,6 @@ import numpy as np
 from Michelson import Michelson
 import matplotlib.pyplot as plt
 
-# Hoi
 # MAIN
 def main():
     wavelength = 632.8e-9  # wavelength of HeNe laser
