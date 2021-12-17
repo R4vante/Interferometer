@@ -27,27 +27,30 @@ class Michelson:
         self.F = CircAperture(self.size/3, 0, 0, self.F)
         self.F = Tilt(tx, ty, self.F)
 
+        """ Create a aberration with Zernike function (n=4, m=0)"""
+
+
     def interfere(self):
-        F = Lens(self.f, 0, 0, self.F)
+        self.F = Lens(self.f, 0, 0, self.F)
 
         # Propagate to the beamsplitter:
-        F = Forvard(self.z3, F)
+        self.F = Forvard(self.z3, self.F)
 
         # Split the beam and propagate to- and back from mirror #2:
-        F2 = IntAttenuator(1-self.Rbs, F)
+        F2 = IntAttenuator(1-self.Rbs, self.F)
         F2 = Forvard(self.z2, F2)
 
         F2 = IntAttenuator(self.Rbs, F2)
 
         # Split off the second beam and propagate to- and back from the mirror #1:
-        F10 = IntAttenuator(self.Rbs, F)
+        F10 = IntAttenuator(self.Rbs, self.F)
         F1 = Forvard(self.z1*2, F10)
         F1 = IntAttenuator(1-self.Rbs, F1)
 
         # Recombine the two beams and propagate to the screen:
-        F = BeamMix(F1, F2)
-        F = Forvard(self.z4, F)
-        self.I = Intensity(1, F)
+        self.F = BeamMix(F1, F2)
+        self.F = Forvard(self.z4, self.F)
+        self.I = Intensity(1, self.F)
 
     def reset_tilt(self, current_tx, current_ty):
         # tilting the wavefront back to a straight wavefront
@@ -59,7 +62,7 @@ class Michelson:
         plt.imshow(self.I, cmap='gray')
         plt.axis('off')
         plt.title('intensity pattern')
-        return plt
+        # return plt
 
     def subplot_x(self, grid_width, grid_height, tx, args):
         plt.subplot(grid_height, grid_width, args).imshow(self.I, cmap='gray')
