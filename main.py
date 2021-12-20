@@ -1,7 +1,7 @@
 import numpy as np
-
 from Michelson import Michelson
 import matplotlib.pyplot as plt
+
 
 # MAIN
 def main():
@@ -11,12 +11,12 @@ def main():
     R = 3e-3  # laser beam radius
     z1 = 8e-2  # length of arm 1
     z2 = 3.6e-2  # length of arm 2
-    z3 = 3e-2  # distance laser to beamsplitter
-    z4 = 5e-2  # distance beamsplitter to screen
+    z3 = 3e-2  # distance laser to beam splitter
+    z4 = 5e-2  # distance beam splitter to screen
     Rbs = 0.5  # reflection beam splitter
     f = -100e-2  # focal length of positive lens
 
-    tx = 2.0e-3;ty = 0.0e-3  # tilt of mirror 1
+    tx = 2.0e-3; ty = 0.0e-3  # tilt of mirror 1
     tx_list = np.linspace(-2.0e-3, 2.0e-3, 5)
     ty_list = np.linspace(-2.0e-3, 2.0e-3, 5)
     grid_height = 2
@@ -36,14 +36,13 @@ def main():
         fig1 = plt.figure()
 
         # subplots in x direction
-    
+
         for my_tx in my_tx_list:
             i += 1
             light_beam = Michelson(wavelength, size, N, R, z1, z2, z3, z4, Rbs, f)
             light_beam.disturb(my_tx, 0)
             light_beam.interfere()
             light_beam.subplot_x(my_grid_width, my_grid_height, my_tx, args=i)
-            
 
         # subplots in y direction
         for my_ty in my_ty_list:
@@ -56,7 +55,7 @@ def main():
 
     run_normal()
 
-    #Plot for tilt in x direction
+    # Plot for tilt in x direction
     # Create figure
     my_subplot(grid_width, grid_height, tx_list, ty_list)
 

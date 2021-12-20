@@ -27,13 +27,12 @@ class Michelson:
         self.F = CircAperture(self.size/3, 0, 0, self.F)
         self.F = Tilt(tx, ty, self.F)
 
-        """ Create a aberration with Zernike function (n=4, m=0)"""
-
+        """ Create an aberration with Zernike function (n=4, m=0)"""
 
     def interfere(self):
         self.F = Lens(self.f, 0, 0, self.F)
 
-        # Propagate to the beamsplitter:
+        # Propagate to the beam splitter:
         self.F = Forvard(self.z3, self.F)
 
         # Split the beam and propagate to- and back from mirror #2:
@@ -75,7 +74,5 @@ class Michelson:
         plt.axis("off")
         plt.title("Tilt: %.1E" % ty)
 
-
     def get_intensity(self):
         return self.I
-
