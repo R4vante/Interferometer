@@ -24,7 +24,7 @@ def main():
 
     def run_normal():
         light_beam = Michelson(wavelength, size, N, R, z1, z2, z3, z4, Rbs, f)
-        light_beam.disturb(tx, ty)
+        light_beam.tilt(tx, ty)
         light_beam.interfere()
         light_beam.plot()
         plt.show()
@@ -40,24 +40,32 @@ def main():
         for my_tx in my_tx_list:
             i += 1
             light_beam = Michelson(wavelength, size, N, R, z1, z2, z3, z4, Rbs, f)
-            light_beam.disturb(my_tx, 0)
+            light_beam.tilt(my_tx, 0)
             light_beam.interfere()
-            light_beam.subplot_x(my_grid_width, my_grid_height, my_tx, args=i)
+            light_beam.subplot(my_grid_width, my_grid_height, my_tx, args=i)
 
         # subplots in y direction
         for my_ty in my_ty_list:
             i += 1
             light_beam = Michelson(wavelength, size, N, R, z1, z2, z3, z4, Rbs, f)
-            light_beam.disturb(0, my_ty)
+            light_beam.tilt(0, my_ty)
             light_beam.interfere()
             I = light_beam.get_intensity()
-            light_beam.subplot_y(my_grid_width, my_grid_height, my_ty, args=i)
+            light_beam.subplot(my_grid_width, my_grid_height, my_ty, args=i)
 
-    run_normal()
+    def spherical_aberration():
+        light_beam = Michelson(wavelength, size, N, R, z1, z2, z3, z4, Rbs, f)
+        light_beam.spherical()
+        light_beam.interfere()
+        light_beam.plot()
+
+    spherical_aberration()
+
+    # run_normal()
 
     # Plot for tilt in x direction
     # Create figure
-    my_subplot(grid_width, grid_height, tx_list, ty_list)
+    # my_subplot(grid_width, grid_height, tx_list, ty_list)
 
     # Plot for tilt in y direction
     plt.show()

@@ -22,7 +22,7 @@ class Michelson:
         # Generate a weak converging laser beam using a weak positive lens
         self.F = GaussHermite(Begin(self.size, self.wavelength, self.N), self.R)
 
-    def disturb(self, tx, ty):
+    def tilt(self, tx, ty):
         # Introduces tilt to the beam, before it enters the interferometer
         self.F = CircAperture(self.size/3, 0, 0, self.F)
         self.F = Tilt(tx, ty, self.F)
@@ -61,18 +61,16 @@ class Michelson:
         plt.imshow(self.I, cmap='gray')
         plt.axis('off')
         plt.title('intensity pattern')
-        # return plt
 
-    def subplot_x(self, grid_width, grid_height, tx, args):
+    def subplot(self, grid_width, grid_height, tilt, args):
         plt.subplot(grid_height, grid_width, args).imshow(self.I, cmap='gray')
         plt.axis("off")
-        plt.title("Tilt: %.1E" % tx)
-        return plt
-
-    def subplot_y(self, grid_widht, grid_height, ty, args):
-        plt.subplot(grid_height, grid_widht, args).imshow(self.I, cmap='gray')
-        plt.axis("off")
-        plt.title("Tilt: %.1E" % ty)
+        plt.title("Tilt: %.1E" % tilt)
 
     def get_intensity(self):
         return self.I
+
+    def spherical(self):
+        A = self.wavelength/(2*np.pi*np.sqrt(6))
+        self.F = CircAperture(self.size / 3, 0, 0, self.F)
+        self.F = Zernike(4, 0, self.size/3, 10*A, self.F)
