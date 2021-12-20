@@ -51,14 +51,15 @@ def main():
             I = light_beam.get_intensity()
             light_beam.subplot(my_grid_width, my_grid_height, my_ty, args=i)
 
-    def spherical_aberration():
+    def spherical_aberration(n, m, tx, ty):
         light_beam = Michelson(wavelength, size, N, R, z1, z2, z3, z4, Rbs, f)
-        light_beam.spherical(4, 0)
+        light_beam.spherical(n, m)
+        light_beam.tilt(tx, ty)
         light_beam.interfere()
         light_beam.plot_intensity()
         light_beam.plot()
 
-    spherical_aberration()
+    spherical_aberration(4, 0, 3e-3, 0)
 
     # run_normal()
 
