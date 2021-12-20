@@ -73,4 +73,9 @@ class Michelson:
     def spherical(self):
         A = self.wavelength/(2*np.pi*np.sqrt(6))
         self.F = CircAperture(self.size / 3, 0, 0, self.F)
-        self.F = Zernike(4, 0, self.size/3, 10*A, self.F)
+        self.F = Zernike(1, 1, self.size/3, 10*A, self.F)
+
+    def plot_intensity(self):
+        plt.figure()
+        x = np.linspace(-self.size/2, self.size/2, self.N)
+        plt.plot(x, self.I[int(self.N/2)])
