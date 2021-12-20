@@ -57,6 +57,7 @@ def main():
         light_beam = Michelson(wavelength, size, N, R, z1, z2, z3, z4, Rbs, f)
         light_beam.spherical()
         light_beam.interfere()
+        light_beam.plot_intensity()
         light_beam.plot()
 
     spherical_aberration()
