@@ -6,14 +6,15 @@ import matplotlib.pyplot as plt
 def main():
     wavelength = 632.8e-9  # wavelength of HeNe laser
     size = 20e-3  # size of the grid
-    N = 900  # number (NxN) of grid pixels
+    N = 2000  # number (NxN) of grid pixels
     R = 3e-3  # laser beam radius
     z1 = 8e-2  # length of arm 1
     z2 = 3.6e-2 + wavelength/2  # length of arm 2
     z3 = 3e-2  # distance laser to beam splitter
     z4 = 5e-2  # distance beam splitter to screen
     Rbs = 0.5  # reflection beam splitter
-    f = -100e-2  # focal length of positive lens
+    f = 100e-3  # focal length of positive lens
+    #f = 100e-2
 
     tx = 2.0e-3; ty = 0.0e-3  # tilt of mirror 1
     tx_list = np.linspace(-2.0e-3, 2.0e-3, 5)

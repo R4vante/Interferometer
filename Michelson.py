@@ -32,8 +32,12 @@ class Michelson:
     def interfere(self):
         self.F = Lens(self.f, 0, 0, self.F)
 
+        self.F = Forvard(10e-3, self.F)
+
+        self.F = Lens(-self.f, 0, 0, self.F)
+
         # Propagate to the beam splitter:
-        self.F = Forvard(self.z3, self.F)
+        self.F = Forvard(self.z3 - 5e-3, self.F)
 
         # Split the beam and propagate to- and back from mirror #2:
         F2 = IntAttenuator(1-self.Rbs, self.F)
