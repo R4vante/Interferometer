@@ -9,7 +9,7 @@ def main():
     N = 900  # number (NxN) of grid pixels
     R = 3e-3  # laser beam radius
     z1 = 8e-2  # length of arm 1
-    z2 = 3.6e-2  # length of arm 2
+    z2 = 3.6e-2 + wavelength/2  # length of arm 2
     z3 = 3e-2  # distance laser to beam splitter
     z4 = 5e-2  # distance beam splitter to screen
     Rbs = 0.5  # reflection beam splitter
@@ -59,7 +59,7 @@ def main():
         light_beam.plot_intensity()
         light_beam.plot()
 
-    spherical_aberration(4, 0, 3e-3, 0)
+    spherical_aberration(0, 0, 0e-3, 0)
 
     # run_normal()
 
