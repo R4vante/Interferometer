@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 def main():
     wavelength = 632.8e-9  # wavelength of HeNe laser
     size = 20e-3  # size of the grid
-    N = 2000  # number (NxN) of grid pixels
-    R = 3e-3  # laser beam radius
+    N = 5000  # number (NxN) of grid pixels
+    R = 5e-3  # laser beam radius
     z1 = 8e-2  # length of arm 1
     z2 = 3.6e-2 + wavelength/2  # length of arm 2
     z3 = 3e-2  # distance laser to beam splitter
@@ -60,7 +60,7 @@ def main():
         light_beam.plot_intensity()
         light_beam.plot()
 
-    spherical_aberration(0, 0, 0e-3, 0)
+    spherical_aberration(3, 1, 0e-3, 0)
 
     # run_normal()
 
