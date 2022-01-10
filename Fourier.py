@@ -21,9 +21,8 @@ for i in range(x.shape[0]):
 
 # Calculate aberration in the wavefront
 
-y = y * (1-6*x**2 + x**4)
-# abb = x**3*np.cos(np.deg2rad(10))
-# y = y * abb
+abb = x**4
+y = y * abb
 
 
 
