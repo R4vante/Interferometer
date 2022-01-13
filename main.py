@@ -11,7 +11,7 @@ def main():
     z1 = 8e-2  # length of arm 1
     z2 = 3.6e-2 + wavelength/2  # length of arm 2
     z3 = 3e-2  # distance laser to beam splitter
-    z4 = 5e-2  # distance beam splitter to screen
+    z4 = 4e-2  # distance beam splitter to screen
     Rbs = 0.5  # reflection beam splitter
     f = 100e-3  # focal length of positive lens
     #f = 100e-2
@@ -60,7 +60,7 @@ def main():
         light_beam.plot_intensity()
         light_beam.plot()
 
-    spherical_aberration(3, 1, 0e-3, 0)
+    spherical_aberration(2, 2, 0e-3, 0)
 
     # run_normal()
 
