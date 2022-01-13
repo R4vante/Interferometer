@@ -11,7 +11,7 @@ def main():
     z1 = 8e-2  # length of arm 1
     z2 = 3.6e-2 + wavelength/2  # length of arm 2
     z3 = 3e-2  # distance laser to beam splitter
-    z4 = 4e-2  # distance beam splitter to screen
+    z4 = 5e-2  # distance beam splitter to screen
     Rbs = 0.5  # reflection beam splitter
     f = 100e-3  # focal length of positive lens
     #f = 100e-2
@@ -22,6 +22,7 @@ def main():
     grid_height = 2
     grid_width = 5
 
+    # Initial function to create tip and tillt.
     def run_normal():
         light_beam = Michelson(wavelength, size, N, R, z1, z2, z3, z4, Rbs, f)
         light_beam.tilt(tx, ty)
@@ -52,6 +53,7 @@ def main():
             I = light_beam.get_intensity()
             light_beam.subplot(my_grid_width, my_grid_height, my_ty, args=i)
 
+    # Function that is called now. Creates spherical aberration of any kind by zernike coefficients.
     def spherical_aberration(n, m, tx, ty):
         light_beam = Michelson(wavelength, size, N, R, z1, z2, z3, z4, Rbs, f)
         light_beam.spherical(n, m)
@@ -60,15 +62,10 @@ def main():
         light_beam.plot_intensity()
         light_beam.plot()
 
+
+    # Function call
     spherical_aberration(2, 2, 0e-3, 0)
 
-    # run_normal()
-
-    # Plot for tilt in x direction
-    # Create figure
-    # my_subplot(grid_width, grid_height, tx_list, ty_list)
-
-    # Plot for tilt in y direction
     plt.show()
 
 

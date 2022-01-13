@@ -73,9 +73,13 @@ class Michelson:
     def get_intensity(self):
         return self.I
 
+    # Calculation of aberration
     def spherical(self, n, m):
+        # calculate amplitude of aberration (magnitude)
         A = self.wavelength/(2*np.pi*np.sqrt(6))
+        # Create circular slit
         self.F = CircAperture(self.size / 3, 0, 0, self.F)
+        # Calculate Zernike polynomial. n and m are Zernikecoefficients
         self.F = Zernike(n, m, self.size/2, 100*A, self.F)
 
     def plot_intensity(self):
