@@ -1,3 +1,5 @@
+"""Main script of the interferometer algorithm"""
+
 import numpy as np
 from Michelson import Michelson
 import matplotlib.pyplot as plt
