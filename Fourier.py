@@ -6,7 +6,6 @@ the boundries of the rectangle.
 '''
 
 from scipy.fft import fft
-from sklearn import preprocessing
 import numpy as np
 import matplotlib.pyplot as plt
 
